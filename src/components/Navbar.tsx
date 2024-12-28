@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import { Button } from "./ui/button";
 import {
   NavigationMenu,
@@ -9,6 +8,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
+import { Switch } from "./ui/switch";
+import { RiCloseLargeFill } from "react-icons/ri";
+import { AiOutlineMenu } from "react-icons/ai";
+import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
   return (
@@ -41,7 +44,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <NavigationMenuLink
-                        href="/services/web-developemnt"
+                        href="/services/app"
                         className="hover:text-gray-600"
                       >
                         Mobile Apps
@@ -49,7 +52,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <NavigationMenuLink
-                        href="/services/web-developemnt"
+                        href="/services/seo"
                         className="hover:text-gray-600"
                       >
                         Search Engine Optimization
@@ -59,8 +62,29 @@ const Navbar = () => {
                 </NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="/news" className="hover:text-gray-600">
+                About
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="/news" className="hover:text-gray-600">
+                Contact
+              </NavigationMenuLink>
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+
+        <div className="hidden md:flex items-center space-x-4 ">
+          <div className="flex items-center">
+            <span className="mr-2">Dark Mode</span>
+            <Switch />
+          </div>
+          <Button variant="default" className="px-6">
+            Login
+          </Button>
+        </div>
+        <MobileMenu />
       </nav>
     </header>
   );
