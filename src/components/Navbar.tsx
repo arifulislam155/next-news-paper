@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import {
@@ -12,8 +13,10 @@ import { Switch } from "./ui/switch";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { AiOutlineMenu } from "react-icons/ai";
 import MobileMenu from "./MobileMenu";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
   return (
     <header className="py-4 bg-white shadow-md text-gray-900 transition-colors duration-300">
       <nav className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 md:px-8">
@@ -23,7 +26,12 @@ const Navbar = () => {
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList className="flex space-x-8">
             <NavigationMenuItem>
-              <NavigationMenuLink href="/news" className="hover:text-gray-600">
+              <NavigationMenuLink
+                href="/news"
+                className={`${
+                  pathname === "/news" ? "text-red-500 font-semibold" : ""
+                }hover:text-gray-600`}
+              >
                 News
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -63,12 +71,22 @@ const Navbar = () => {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink href="/news" className="hover:text-gray-600">
+              <NavigationMenuLink
+                href="/about"
+                className={`${
+                  pathname === "/about" ? "text-red-500 font-semibold" : ""
+                }hover:text-gray-600`}
+              >
                 About
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink href="/news" className="hover:text-gray-600">
+              <NavigationMenuLink
+                href="/contact"
+                className={`${
+                  pathname === "/contact" ? "text-red-500 font-semibold" : ""
+                }hover:text-gray-600`}
+              >
                 Contact
               </NavigationMenuLink>
             </NavigationMenuItem>
